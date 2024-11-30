@@ -1,34 +1,46 @@
 import { useState } from "react";
 const Form = () => {
   //Aqui deberan implementar el form completo con sus validaciones
-  const [fullname, setFullname] = useState("");
-  const [email, setEmail] = useState("");
-
+  const [visitor, setVisitor] = useState({
+    fullname: "", email: ""
+  })
+  const ErrorMessage = "Por favor verifique su información nuevamente";
+  const [error, setError] = useState(false);
 
   const readFullname = (e) => {
     let inputName = e.target.value.trim();
-    return /[a-záéíóúñ]{6,}/ig.test(inputName)
-      ? setFullname(inputName)
-      : ""
+    if (/[a-záéíóúñ]{6,}/ig.test(inputName))
+      setVisitor({ ...visitor, fullname: inputName });
+    console.log(visitor);
   }
+
   const readEmail = (e) => {
     let inputEmail = e.target.value.trim();
-    return /^[\w]{4,}@[a-z]{3,}\.[a-z]{2,4}$/.test(inputEmail)
-      ? setEmail(inputEmail)
-      : ""
+    if (/^[\w]{4,}@[a-z]{3,}\.[a-z]{2,4}$/.test(inputEmail))
+      setVisitor({ ...visitor, email: inputEmail });
+    console.log(visitor);
   }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (email && fullname) console.info(`Gracias ${fullname}, te contactaremos cuando antes vía mail`)
-    else console.warn("Por favor verifique su información nuevamente")
+    if (visitor.fullname && visitor.email) {
+      console.info(`Gracias ${visitor.fullname}, te contactaremos cuando antes vía mail`);
+      setError(false);
+    }
+    else {
+      setError(true);
+    }
   }
+
   return (
     <div>
       <h2>Formulario</h2>
       <form className="formulario" onSubmit={handleSubmit}>
-        <input onChange={(e) => readFullname(e)} type="text" placeholder="Nombre completo" required autoComplete="on" />
-        <input onChange={(e) => readEmail(e)} type="text" placeholder="Email" />
-        <input type="submit" value="Enviar" />
+        <input type="text" onBlur={(e) => readFullname(e)} placeholder="Nombre completo" required autoComplete="On" title="Fullname must have at least 6 characters" />
+        <input type="email" onBlur={(e) => readEmail(e)} placeholder="Email" title="Email must have 4 characters before @"
+          required autoComplete="On" />
+        <input type="submit" value="Send" />
+        {error && <p>{ErrorMessage}</p>}
       </form>
     </div>
   );
