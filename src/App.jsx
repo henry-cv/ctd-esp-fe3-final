@@ -13,10 +13,10 @@ function App() {
       < Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/contact' element={<Contact />} />
+        <Route path='/contacto' element={<Contact />} />
         <Route path='/favs' element={<Favs />} />
-        <Route path='/detail' element={< Detail />} />
-        <Route path='*' element={<h1>Page not Found 404</h1>} />
+        <Route path='/dentista/:id' element={<Detail />} />
+        {/* <Route path='*' element={<h1>Page not Found 404</h1>} /> */}
       </Routes >
       <Footer />
     </div>
