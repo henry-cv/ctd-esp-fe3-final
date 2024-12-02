@@ -1,12 +1,13 @@
 import axios from "axios";
 import Card from '../Components/Card'
 import { useEffect, useState } from 'react';
+import { useContextGlobal } from "../Components/utils/global.context";
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Home = () => {
   const url = "https://jsonplaceholder.typicode.com/users";
   const [dentistList, setDentistList] = useState([]);
-
+  const { theme } = useContextGlobal();
   const getList = () => {
     axios(url)
       .then((res) => {
@@ -22,7 +23,7 @@ const Home = () => {
   }, []);
 
   return (
-    <main className="" >
+    <main className={theme} >
       <h1>Home</h1>
       <div className='card-grid'>
         {/* Aqui deberias renderizar las cards */}

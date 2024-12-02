@@ -38,7 +38,7 @@ a{
 }
 a:hover{
   color: rgb(136, 136, 136);
-} 
+}
 
 footer {
   display: flex;
@@ -119,4 +119,7 @@ tr:nth-child(even) {
 }
 .dark > a {
   color: white;
+}
+.dark > button{
+  background-color: #615e5e;
 }

@@ -5,11 +5,12 @@ import Home from "./Routes/Home"
 import Contact from './Routes/Contact'
 import Detail from './Routes/Detail'
 import Favs from './Routes/Favs';
+import { useContextGlobal } from "./Components/utils/global.context";
 
 function App() {
+  const { theme } = useContextGlobal();
   return (
-
-    <div className="App">
+    <div className={`App ${theme}`}>
       < Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
