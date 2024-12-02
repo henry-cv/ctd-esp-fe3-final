@@ -21,7 +21,6 @@ const Home = () => {
   useEffect(() => {
     getList()
   }, []);
-
   return (
     <main className={theme} >
       <h1>Home</h1>

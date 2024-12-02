@@ -1,12 +1,23 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useContextGlobal } from './utils/global.context';
+import { useEffect } from 'react';
 const Card = ({ name, username, id }) => {
-  const { theme } = useContextGlobal();
+  const { theme, favs, setFavs } = useContextGlobal();
   const addFav = () => {
     // Aqui iria la logica para agregar la Card en el localStorage
+    let fav = {
+      id, name, username
+    }
+    localStorage.setItem("fav", JSON.stringify(fav));
+    setFavs((prevFavs) =>
+      [...prevFavs, fav]
+    )
+    //localStorage.setItem("favourites", JSON.stringify(favs));
   }
+  useEffect(() => {
+    localStorage.setItem("favourites", JSON.stringify(favs));
+  }, [favs])
   return (
     <div className={`card ${theme}`}>
       {/* En cada card deberan mostrar en name - username y el id */}

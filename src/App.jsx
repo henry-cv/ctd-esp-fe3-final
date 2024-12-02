@@ -6,9 +6,14 @@ import Contact from './Routes/Contact'
 import Detail from './Routes/Detail'
 import Favs from './Routes/Favs';
 import { useContextGlobal } from "./Components/utils/global.context";
+import { useEffect } from "react";
 
 function App() {
   const { theme } = useContextGlobal();
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme])
+
   return (
     <div className={`App ${theme}`}>
       < Navbar />
