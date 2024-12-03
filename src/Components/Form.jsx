@@ -8,20 +8,6 @@ const Form = () => {
   const ErrorMessage = "Por favor verifique su información nuevamente";
   const SuccessMessage = `Gracias ${visitor.fullname}, te contactaremos cuando antes vía mail`;
 
-  const readFullname = (e) => {
-    let inputName = e.target.value.trim();
-    if (/[a-záéíóúñ]{6,}/ig.test(inputName))
-      setVisitor({ ...visitor, fullname: inputName });
-    console.log(visitor);
-  }
-
-  const readEmail = (e) => {
-    let inputEmail = e.target.value.trim();
-    if (/^[\w]{4,}@[a-z]{3,}\.[a-z]{2,4}$/.test(inputEmail))
-      setVisitor({ ...visitor, email: inputEmail });
-    console.log(visitor);
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const expValidName = /[a-záéíóúñ]{6,}/ig
@@ -34,13 +20,6 @@ const Form = () => {
       console.log(ErrorMessage);
       setError(true);
     }
-    /* if (visitor.fullname && visitor.email) {
-      console.info(`Gracias ${visitor.fullname}, te contactaremos cuando antes vía mail`);
-      setError(false);
-    }
-    else {
-      setError(true);
-    } */
   }
 
   return (
@@ -51,8 +30,7 @@ const Form = () => {
         <input type="email" onChange={(e) => setVisitor({ ...visitor, email: e.target.value })} placeholder="Email" title="Email must have 4 characters before @"
           required autoComplete="On" />
         <input type="submit" value="Send" />
-        {error && <p>{ErrorMessage}</p>}
-        {!error && <p>{SuccessMessage}</p>}
+        {error ? <p>{ErrorMessage}</p> : <p>{SuccessMessage}</p>}
       </form>
     </div>
   );
