@@ -9,7 +9,9 @@ import { useContextGlobal } from "./Components/utils/global.context";
 import { useEffect } from "react";
 
 function App() {
-  const { theme } = useContextGlobal();
+  //const { theme } = useContextGlobal();
+  const { state } = useContextGlobal();
+  const { theme } = state;
   useEffect(() => {
     document.body.className = theme;
   }, [theme])

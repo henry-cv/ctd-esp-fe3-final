@@ -6,6 +6,7 @@ import { useContextGlobal } from './utils/global.context';
 const Navbar = () => {
   //const { theme, changeTheme } = useContextGlobal();
   const { state, dispatch } = useContextGlobal();
+  const { theme } = state;
   /* console.log("Navbar, valor de changeTheme:")
   console.log(changeTheme); */
   /* const changeTheme = () => {
@@ -14,11 +15,11 @@ const Navbar = () => {
 
   {/* <nav className={theme}> */ }
   console.log("valor de theme, en NavBar")
-  console.log(state.theme);
+  console.log(theme);
   console.log("Valor de state:")
   console.log(state);
   return (
-    <nav className={state.theme} >
+    <nav className={theme} >
       {/* Aqui deberan agregar los liks correspondientes a las rutas definidas */}
       {/* Deberan implementar ademas la logica para cambiar de Theme con el button */}
       <Link to='/'> <h3>Home</h3></Link>
@@ -28,7 +29,7 @@ const Navbar = () => {
       <button onClick={() => dispatch({
         type: "CHANGE_THEME",
         payload: state.theme === "light" ? "dark" : "light"
-      })}>Change Theme</button>
+      })} className={theme}>Change Theme</button>
     </nav>
   )
 }

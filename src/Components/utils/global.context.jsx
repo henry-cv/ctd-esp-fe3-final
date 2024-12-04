@@ -2,7 +2,8 @@
 import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import { reducer } from "./reducer";
 //export const initialState = { theme: "light", data: [] }
-export const initialState = { theme: "light", data: [] }
+const storedTheme = localStorage.getItem("theme");
+export const initialState = { theme: storedTheme || "light", data: [] }
 console.log("valor de Initial State");
 console.log(initialState);
 

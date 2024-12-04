@@ -2,11 +2,16 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useContextGlobal } from "../Components/utils/global.context";
 
 const Detail = () => {
   const [dentist, setDentist] = useState({});
   // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
   const { id } = useParams();
+  const { state } = useContextGlobal();
+  const { theme } = state;
+  console.log("theme in Detail");
+  console.log(theme);
   const url = `https://jsonplaceholder.typicode.com/users/${id}`;
   console.log(`id: ${id}`);
 
@@ -28,9 +33,9 @@ const Detail = () => {
     <>
       <h1>Detail Dentist {id} </h1>
       {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
-      <article className="card">
+      <article className={`card ${theme}`}>
         <h3>{dentist.name}</h3>
-        <img src="../../public/images/doctor.jpg" alt="foto" width="200px" />
+        <img src="/images/doctor.jpg" alt="foto" width="200px" />
         <h3>{dentist.email}</h3>
         <h3>{dentist.phone}</h3>
         <h3>{dentist.website}</h3>

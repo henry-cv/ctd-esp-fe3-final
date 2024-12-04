@@ -10,10 +10,8 @@ const Card = ({ name, username, id }) => {
       id, name, username
     }
     localStorage.setItem("fav", JSON.stringify(fav));
-    setFavs((prevFavs) =>
-      [...prevFavs, fav]
-    )
-    //localStorage.setItem("favourites", JSON.stringify(favs));
+    setFavs((prevFavs) => [...prevFavs, fav]);
+
   }
   useEffect(() => {
     localStorage.setItem("favourites", JSON.stringify(favs));
