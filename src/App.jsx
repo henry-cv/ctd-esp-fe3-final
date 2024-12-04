@@ -12,9 +12,13 @@ function App() {
   //const { theme } = useContextGlobal();
   const { state } = useContextGlobal();
   const { theme } = state;
-  useEffect(() => {
+  /* useEffect(() => {
     document.body.className = theme;
-  }, [theme])
+  }, [theme]) */
+  useEffect(() => {
+    const rootDiv = document.getElementById('root');
+    rootDiv.className = theme; // Cambia la clase del root
+  }, [theme]);
 
   return (
     <div className={`App ${theme}`}>
@@ -24,7 +28,7 @@ function App() {
         <Route path='/contacto' element={<Contact />} />
         <Route path='/favs' element={<Favs />} />
         <Route path='/dentista/:id' element={<Detail />} />
-        {/* <Route path='*' element={<h1>Page not Found 404</h1>} /> */}
+        <Route path='*' element={<h1>Page not Found</h1>} />
       </Routes >
       <Footer />
     </div>
