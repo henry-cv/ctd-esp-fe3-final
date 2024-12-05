@@ -3,7 +3,8 @@ import { createContext, useContext, useEffect, useReducer, useState } from "reac
 import { reducer } from "./reducer";
 //export const initialState = { theme: "light", data: [] }
 const storedTheme = localStorage.getItem("theme");
-export const initialState = { theme: storedTheme || "light", data: [] }
+const favourites = JSON.parse(localStorage.getItem("favourites"));
+export const initialState = { theme: storedTheme || "light", data: favourites || [] }
 console.log("valor de Initial State");
 console.log(initialState);
 
