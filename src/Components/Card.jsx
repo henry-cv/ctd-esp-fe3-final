@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Link } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
 import { useContextGlobal } from './utils/global.context';
 import { useEffect } from 'react';
 const Card = ({ name, username, id }) => {
@@ -7,6 +7,9 @@ const Card = ({ name, username, id }) => {
   const { state, dispatch } = useContextGlobal();
   //const { theme, data } = state;
   const { theme, data: favs } = state;
+  const location = useLocation();
+  console.log("location.pathname");
+  console.log(location.pathname);
 
   const addFav = () => {
     // Aqui iria la logica para agregar la Card en el localStorage
@@ -17,6 +20,13 @@ const Card = ({ name, username, id }) => {
     dispatch({
       type: "ADD_FAV",
       payload: fav
+    })
+  }
+  const delFav = (e)=>{
+    const dataId = e.target.dataset.id;
+    dispatch({
+      type: "REMOVE_FAV",
+      dataId,
     })
   }
   useEffect(() => {
@@ -34,7 +44,10 @@ const Card = ({ name, username, id }) => {
         {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
       </Link>
       {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
-      <button onClick={() => addFav()} data-id={id} className={`favButton ${theme}`}>Add fav</button>
+      {location.pathname ==="/" &&
+      <button onClick={() => addFav()} data-id={id} className={`favButton ${theme}`}>Add fav</button>}
+      {location.pathname ==="/favs" &&
+      <button onClick={(e) => delFav(e)} data-id={id} className={`favButton ${theme}`}>Del fav</button>}
     </div >
   );
 };
