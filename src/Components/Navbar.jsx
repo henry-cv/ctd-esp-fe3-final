@@ -4,7 +4,9 @@ import { useContextGlobal } from './utils/global.context';
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Navbar = () => {
+  const moon = "🌔", sun = "☀";
   //const { theme, changeTheme } = useContextGlobal();
+
   const { state, dispatch } = useContextGlobal();
   const { theme } = state;
   /* console.log("Navbar, valor de changeTheme:")
@@ -14,10 +16,7 @@ const Navbar = () => {
   } */
 
   {/* <nav className={theme}> */ }
-  console.log("valor de theme, en NavBar")
-  console.log(theme);
-  console.log("Valor de state:")
-  console.log(state);
+
   return (
     <nav className={theme} >
       {/* Aqui deberan agregar los liks correspondientes a las rutas definidas */}
@@ -29,7 +28,7 @@ const Navbar = () => {
       <button onClick={() => dispatch({
         type: "CHANGE_THEME",
         payload: state.theme === "light" ? "dark" : "light"
-      })} className={theme}>Change Theme</button>
+      })} className={theme}>{`${theme === "light" ? moon : sun} `}</button>
     </nav>
   )
 }
