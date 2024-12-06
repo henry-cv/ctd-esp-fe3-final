@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { form } from "../styles/App.module.css";
 const Form = () => {
   //Aqui deberan implementar el form completo con sus validaciones
   const [visitor, setVisitor] = useState({
@@ -24,8 +25,7 @@ const Form = () => {
 
   return (
     <div>
-      <h2>Formulario</h2>
-      <form className="formulario" onSubmit={handleSubmit}>
+      <form className={form} onSubmit={handleSubmit}>
         <input type="text" onChange={(e) => setVisitor({ ...visitor, fullname: e.target.value })} placeholder="Nombre completo" required autoComplete="On" title="Fullname must have at least 6 characters" />
         <input type="email" onChange={(e) => setVisitor({ ...visitor, email: e.target.value })} placeholder="Email" title="Email must have 4 characters before @"
           required autoComplete="On" />

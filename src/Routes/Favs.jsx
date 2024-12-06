@@ -1,6 +1,6 @@
 import Card from "../Components/Card";
 import { useContextGlobal } from "../Components/utils/global.context";
-
+import { favStyles, reset } from "../styles/App.module.css"
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Favs = () => {
@@ -17,15 +17,16 @@ const Favs = () => {
     localStorage.setItem("favourites", JSON.stringify([]));
   }
   return (
-    <>
+    <div className={favStyles}>
       <h1>Dentists Favs</h1>
-      <button onClick={resetFavs}>Reset Favs</button >
+      {favs.length > 0 &&
+        <button onClick={resetFavs} className={`${reset} ${theme}`}>Reset Favs</button >}
       <div className={`card-grid ${theme}`}>
         {/* este componente debe consumir los destacados del localStorage */}
         {/* Deberan renderizar una Card por cada uno de ellos */}
         {favs.map((dentista) => <Card id={dentista.id} key={dentista.id} name={dentista.name} username={dentista.username} />)}
       </div>
-    </>
+    </div>
   );
 };
 

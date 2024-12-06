@@ -1,0 +1,28 @@
+.form {
+  & input{
+    border-radius: 12px;
+    padding: 8px 10px;
+  }
+  & [type=submit]{
+    cursor: pointer;
+  }
+}
+.contact{
+  text-align: center;
+}
+.reset{
+  border:none;
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 8px 10px;
+}
+.reset:hover{
+  transform: scale(1.2);
+}
+.favStyles{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 20px;
+}
