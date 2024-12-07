@@ -6,20 +6,29 @@ import { useContextGlobal } from "../Components/utils/global.context";
 
 const Home = () => {
   const url = "https://jsonplaceholder.typicode.com/users";
-  const [dentistList, setDentistList] = useState([]);
-  const { state } = useContextGlobal();
-  const { theme } = state;
+  //const [dentistList, setDentistList] = useState([]);
+  const { state, dispatch } = useContextGlobal();
+  const { theme, arDentists: dentistList } = state;
   const getList = () => {
     axios(url)
       .then((res) => {
-        setDentistList(res.data);
+        //setDentistList(res.data);
+        dispatch({
+          type: "GET_DENTISTS",
+          payload: res.data
+        })
       })
       .catch(err => console.log(err));
   }
 
   useEffect(() => {
-    getList()
+    getList();
+    localStorage.setItem("arDentists", JSON.stringify(state.arDentists));
   }, []);
+
+  console.log("dentist List, recien inicializado:")
+  console.log(dentistList);
+
   return (
     <main className={theme} >
       <h1>Home</h1>

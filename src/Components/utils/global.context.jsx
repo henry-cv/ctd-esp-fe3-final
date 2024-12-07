@@ -3,8 +3,13 @@ import { createContext, useContext, useEffect, useReducer, useState } from "reac
 import { reducer } from "./reducer";
 //export const initialState = { theme: "light", data: [] }
 const storedTheme = localStorage.getItem("theme");
+const storedDentist = JSON.parse(localStorage.getItem("arDentists"));
 const favourites = JSON.parse(localStorage.getItem("favourites"));
-export const initialState = { theme: storedTheme || "light", data: favourites || [] }
+export const initialState = {
+  theme: storedTheme || "light",
+  data: favourites || [],
+  arDentists: storedDentist || []
+}
 
 //export const ContextGlobal = createContext(undefined);
 export const ContextGlobal = createContext();
@@ -17,6 +22,7 @@ const Context = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("theme", state.theme);
   }, [state.theme]);
+
   return (
     <ContextGlobal.Provider value={{ state, dispatch }}>
       {children}
