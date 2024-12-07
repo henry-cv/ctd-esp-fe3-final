@@ -12,12 +12,10 @@ function App() {
   //const { theme } = useContextGlobal();
   const { state } = useContextGlobal();
   const { theme } = state;
-  /* useEffect(() => {
-    document.body.className = theme;
-  }, [theme]) */
   useEffect(() => {
+    document.body.className = theme;
     const rootDiv = document.getElementById('root');
-    rootDiv.className = theme; // Cambia la clase del root
+    rootDiv.className = theme;
   }, [theme]);
 
   return (

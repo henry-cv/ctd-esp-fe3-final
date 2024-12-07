@@ -9,13 +9,6 @@ const Navbar = () => {
 
   const { state, dispatch } = useContextGlobal();
   const { theme } = state;
-  /* console.log("Navbar, valor de changeTheme:")
-  console.log(changeTheme); */
-  /* const changeTheme = () => {
-    //alert("you clicked on Change Theme");
-  } */
-
-  {/* <nav className={theme}> */ }
 
   return (
     <nav className={theme} >

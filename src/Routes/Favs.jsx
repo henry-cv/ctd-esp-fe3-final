@@ -7,8 +7,8 @@ const Favs = () => {
   //const { favs } = useContextGlobal();
   const { state, dispatch } = useContextGlobal();
   const { theme, data: favs } = state;
-  console.log("favs leído desde Favs.jsx");
-  console.log(favs);
+  //Para tener un arreglo local llamado favs con los elementos data
+
   const resetFavs = () => {
     dispatch({
       type: "RESET_FAVS",

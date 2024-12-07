@@ -69,9 +69,8 @@ form{
   flex-direction: column;
   justify-content: space-around;
   width: 300px;
-  height: 200px;
+  height: 180px;
   margin: 0 auto;
-  row-gap: 15px;
 }
 
 .card{
@@ -134,4 +133,3 @@ tr:nth-child(even) {
 .light{
   color:black;
 }
-/* .light Is the default theme, no matter if have rules */

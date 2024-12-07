@@ -12,11 +12,10 @@ export const reducer = (state, action) => {
       return {
         ...state,
         data: exists
-          ? state.data.filter((item) => item.id !== action.payload.id) // Elimina si existe
-          : [...state.data, action.payload], // Agrega si no existe
+          ? state.data.filter((item) => item.id !== action.payload.id)
+          : [...state.data, action.payload]
       };
     default:
-      return state;
-    //throw new Error("Acción no existente");
+      throw new Error("Acción no existente");
   }
 }

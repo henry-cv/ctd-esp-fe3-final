@@ -7,19 +7,16 @@ import { useContextGlobal } from "../Components/utils/global.context";
 const Home = () => {
   const url = "https://jsonplaceholder.typicode.com/users";
   const [dentistList, setDentistList] = useState([]);
-  //const { theme } = useContextGlobal();
   const { state } = useContextGlobal();
   const { theme } = state;
   const getList = () => {
     axios(url)
       .then((res) => {
-        console.log(res);
         setDentistList(res.data);
       })
       .catch(err => console.log(err));
   }
-  console.log("Dentistas Lista");
-  console.log(dentistList);
+
   useEffect(() => {
     getList()
   }, []);
